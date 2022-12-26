@@ -1,3 +1,21 @@
+Database:
+[ ] Has at least 2 tables 
+[ ] Contains at least 1 one:many relationship between tables 
+[ ] Tables contain data 
+[ ] Connects to server
+
+Server: 
+[X] Handles requests 
+[X] Sends responses
+
+Front end: 
+[ ] Has 3-5 interactive features 
+[ ] Communicates with server 
+[ ] Has at least 5 components 
+[X] Stores values on state 
+[X] Uses values from state to display information and/or make requests [ ] Uses props to pass data and/or methods 
+[ ] Includes custom styling
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
