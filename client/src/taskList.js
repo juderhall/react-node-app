@@ -1,28 +1,33 @@
 import {useState, useEffect} from "react"
 import TaskRow from "./taskRow"
 
-const taskArray = [
-    {
-        id: 0,
-        completed: false,
-        note: "work on final project"
-    },
-    {
-        id: 1,
-        completed: false,
-        note: "schedule doctors appointment"
-    }
-]
+// const taskArray = [
+//     {
+//         id: 0,
+//         completed: false,
+//         note: "work on final project"
+//     },
+//     {
+//         id: 1,
+//         completed: false,
+//         note: "schedule doctors appointment"
+//     }
+// ]
 
 const TaskList = () => {
-    const [tasks, setTasks] = useState(taskArray)
+    const [tasks, setTasks] = useState([])
 
-        useEffect(() => {
+    // constructing and calling the function in the same space 
+    // mean some kind of trouble when problem with map.array is 
+    // finally fixed.
+    useEffect(() => {
         const fetchtasks = async () => {
-            const response = await fetch("/api/houses")
-            const houses = await response.json()
-            setTasks(houses)
+            const response = await fetch("/api/tasks")
+            const tasks = await response.json()
+            console.log(tasks.data)
+            setTasks(tasks.data)
         }
+        fetchtasks()
     })
 
     return (

@@ -10,7 +10,7 @@ Server:
 
 Front end: 
 [ ] Has 3-5 interactive features 
-[ ] Communicates with server 
+[X] Communicates with server 
 [ ] Has at least 5 components 
 [X] Stores values on state 
 [X] Uses values from state to display information and/or make requests [ ] Uses props to pass data and/or methods 
