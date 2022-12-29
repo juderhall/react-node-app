@@ -1,9 +1,19 @@
-const env = require("dotenv")
+require('dotenv').config()
 const PORT = process.env.PORT
 const CONNECTION_STRING = process.env.CONNECTION_STRING
 
 const express = require("express")
 const app = express()
+
+const Sequelize = require('sequelize')
+const sequelize = new Sequelize(process.env.CONNECTION_STRING, {
+    dialect: 'postgres',
+    dialectOptions: {
+        ssl: {
+        rejectUnauthorized: false
+        }
+    }
+})
 
 const taskArray = [
     {
@@ -23,7 +33,26 @@ app.get("/api", (req, res) => {
 })
 
 app.get("/api/tasks", (req, res) => {
-    res.json({taskArray})
+    sequelize.query(`
+        DROP TABLE IF EXISTS tasks;
+
+        CREATE TABLE tasks (
+            task_id SERIAL PRIMARY KEY,
+            completed BOOLEAN,
+            note VARCHAR
+        );
+
+        insert into tasks 
+            (completed, note)
+        VALUES
+            (false, 'work on final'),
+            (false, 'schedule work call');
+
+        SELECT * FROM tasks
+    `).then((dbRes) => {
+        res.status(200).send(dbRes[0])
+    })
+    // res.json({taskArray})
 })
 
 app.listen(PORT, () => {

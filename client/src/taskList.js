@@ -20,8 +20,7 @@ const TaskList = () => {
     const fetchtasks = async () => {
         const response = await fetch("/api/tasks")
         const tasks = await response.json()
-        console.log(tasks)
-        setTasks(tasks["tasksArray"])
+        setTasks(tasks)
     }
 
     useEffect(() => {

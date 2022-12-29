@@ -1,8 +1,8 @@
 Database:
 [ ] Has at least 2 tables 
 [ ] Contains at least 1 one:many relationship between tables 
-[ ] Tables contain data 
-[ ] Connects to server
+[X] Tables contain data 
+[X] Connects to server
 
 Server: 
 [X] Handles requests 
