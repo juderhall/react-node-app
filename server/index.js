@@ -1,7 +1,9 @@
+const env = require("dotenv")
+const PORT = process.env.PORT
+const CONNECTION_STRING = process.env.CONNECTION_STRING
+
 const express = require("express")
 const app = express()
-
-const PORT = process.env.PORT || 3001
 
 const taskArray = [
     {

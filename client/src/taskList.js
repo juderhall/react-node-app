@@ -18,21 +18,12 @@ const TaskList = () => {
     const [tasks, setTasks] = useState([])
 
     const fetchtasks = async () => {
-        fetch("/api/tasks")
-        .then((res) => res.json())
-        .then((tasks) => {
-            setTasks(tasks)
-        })
-
-        // const response = await fetch("/api/tasks")
-        // const tasks = await response.json()
-        // console.log(tasks)
-        // setTasks(tasks)
+        const response = await fetch("/api/tasks")
+        const tasks = await response.json()
+        console.log(tasks)
+        setTasks(tasks["tasksArray"])
     }
 
-    // constructing and calling the function in the same space 
-    // mean some kind of trouble when problem with map.array is 
-    // finally fixed.
     useEffect(() => {
         fetchtasks()
     }, [])
@@ -58,7 +49,5 @@ const TaskList = () => {
         </>
     )
 }
-
-
 
 export default TaskList
