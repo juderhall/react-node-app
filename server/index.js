@@ -45,7 +45,7 @@ app.get("/api/tasks", (req, res) => {
         insert into tasks 
             (completed, note)
         VALUES
-            (false, 'work on final'),
+            (true, 'work on final'),
             (false, 'schedule work call');
 
         SELECT * FROM tasks
