@@ -16,6 +16,7 @@ import TaskRow from "./taskRow"
 
 const TaskList = () => {
     const [tasks, setTasks] = useState([])
+    const [completed, setCompleted] = useState()
 
     const fetchtasks = async () => {
         const response = await fetch("/api/tasks")
