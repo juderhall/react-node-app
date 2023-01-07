@@ -41,16 +41,17 @@ app.get("/api/tasks", (req, res) => {
 })
 
 app.post("/api/tasks", (req, res) => {
-    const task = request.body.task
-    sequelize.query(`
-        insert into tasks 
-            (note)
-        VALUES
-            ('{"task"}')
-    `).then(() => {
+    console.log(req.body)
+    // const task = req.body.task
+    // sequelize.query(`
+    //     insert into tasks 
+    //         (note)
+    //     VALUES
+    //         (${task})
+    // `).then(() => {
         res.sendStatus(200)
     })
-})
+// })
 
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`)
