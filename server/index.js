@@ -15,18 +15,18 @@ const sequelize = new Sequelize(process.env.CONNECTION_STRING, {
     }
 })
 
-const taskArray = [
-    {
-        id: 0,
-        completed: false,
-        note: "work on final project"
-    },
-    {
-        id: 1,
-        completed: false,
-        note: "schedule doctors appointment"
-    }
-]
+// const taskArray = [
+//     {
+//         id: 0,
+//         completed: false,
+//         note: "work on final project"
+//     },
+//     {
+//         id: 1,
+//         completed: false,
+//         note: "schedule doctors appointment"
+//     }
+// ]
 
 app.get("/api", (req, res) => {
     res.json({message: "Hello from server!"})
@@ -52,7 +52,10 @@ app.get("/api/tasks", (req, res) => {
     `).then((dbRes) => {
         res.status(200).send(dbRes[0])
     })
-    // res.json({taskArray})
+})
+
+app.post("/api/tasks", (req, res) => {
+    console.log("I have been reached")
 })
 
 app.listen(PORT, () => {

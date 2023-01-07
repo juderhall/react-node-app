@@ -1,11 +1,7 @@
 const CompletedTask = ({completed}) => {
-    return(
-        // <p>{completed.toString()}</p>
+    return (
         <div>
-            <input 
-                type="checkbox"
-                checked={completed}
-            />
+            <input type="checkbox" />
         </div>
     )
 }
