@@ -1,6 +1,6 @@
 require('dotenv').config()
 const PORT = process.env.PORT
-const CONNECTION_STRING = process.env.CONNECTION_STRING
+//const CONNECTION_STRING = process.env.CONNECTION_STRING
 
 const express = require("express")
 const app = express()
@@ -15,19 +15,6 @@ const sequelize = new Sequelize(process.env.CONNECTION_STRING, {
     }
 })
 
-// const taskArray = [
-//     {
-//         id: 0,
-//         completed: false,
-//         note: "work on final project"
-//     },
-//     {
-//         id: 1,
-//         completed: false,
-//         note: "schedule doctors appointment"
-//     }
-// ]
-
 app.get("/api", (req, res) => {
     res.json({message: "Hello from server!"})
 })
@@ -38,15 +25,14 @@ app.get("/api/tasks", (req, res) => {
 
         CREATE TABLE tasks (
             task_id SERIAL PRIMARY KEY,
-            completed BOOLEAN,
             note VARCHAR
         );
 
         insert into tasks 
-            (completed, note)
+            (note)
         VALUES
-            (true, 'work on final'),
-            (false, 'schedule work call');
+            ('work on final'),
+            ('schedule work call');
 
         SELECT * FROM tasks
     `).then((dbRes) => {
@@ -55,7 +41,15 @@ app.get("/api/tasks", (req, res) => {
 })
 
 app.post("/api/tasks", (req, res) => {
-    console.log("I have been reached")
+    const task = request.body.task
+    sequelize.query(`
+        insert into tasks 
+            (note)
+        VALUES
+            ('{"task"}')
+    `).then(() => {
+        res.sendStatus(200)
+    })
 })
 
 app.listen(PORT, () => {

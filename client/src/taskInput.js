@@ -3,10 +3,16 @@ import {useEffect, useState} from "react"
 const TaskInput = () => {
     const [task, setTask] = useState("")
     
-    const submit = (e) => {
+    const submit = async (e) => {
         e.preventDefault()
         console.log(task)
+        fetch("/api/tasks", {
+            method: "POST",
+            body: (task),
+            headers: {"Content-type": "application/json; charset=UTF-8"}
+        }).then(response => response.json)
     }
+
 
     return (
         <tr>
