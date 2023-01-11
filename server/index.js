@@ -2,8 +2,11 @@ require('dotenv').config()
 const PORT = process.env.PORT
 //const CONNECTION_STRING = process.env.CONNECTION_STRING
 
+const bodyParser = require("body-parser")
 const express = require("express")
 const app = express()
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 const Sequelize = require('sequelize')
 const sequelize = new Sequelize(process.env.CONNECTION_STRING, {
@@ -15,11 +18,7 @@ const sequelize = new Sequelize(process.env.CONNECTION_STRING, {
     }
 })
 
-app.get("/api", (req, res) => {
-    res.json({message: "Hello from server!"})
-})
-
-app.get("/api/tasks", (req, res) => {
+app.post("/api/seed", (req, res) => {
     sequelize.query(`
         DROP TABLE IF EXISTS tasks;
 
@@ -27,13 +26,13 @@ app.get("/api/tasks", (req, res) => {
             task_id SERIAL PRIMARY KEY,
             note VARCHAR
         );
+    `).then((dbRes) => {
+        res.sendStatus(200)
+    })
+})
 
-        insert into tasks 
-            (note)
-        VALUES
-            ('work on final'),
-            ('schedule work call');
-
+app.get("/api/tasks", (req, res) => {
+    sequelize.query(`
         SELECT * FROM tasks
     `).then((dbRes) => {
         res.status(200).send(dbRes[0])
@@ -41,17 +40,17 @@ app.get("/api/tasks", (req, res) => {
 })
 
 app.post("/api/tasks", (req, res) => {
-    console.log(req.body)
-    // const task = req.body.task
-    // sequelize.query(`
-    //     insert into tasks 
-    //         (note)
-    //     VALUES
-    //         (${task})
-    // `).then(() => {
+    const {task} = req.body
+    console.log(task)
+    sequelize.query(`
+        insert into tasks 
+            (note)
+        VALUES
+            ('${task}')
+    `).then(() => {
         res.sendStatus(200)
     })
-// })
+})
 
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`)
