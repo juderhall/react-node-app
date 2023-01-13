@@ -4,6 +4,8 @@ import TaskInput from "./taskInput"
 
 const TaskList = () => {
     const [tasks, setTasks] = useState([])
+    
+    // const [counter, setCounter] = useState(0)
 
     const fetchtasks = async () => {
         const response = await fetch("/api/tasks")
@@ -13,6 +15,7 @@ const TaskList = () => {
 
     useEffect(() => {
         fetchtasks()
+        console.log(tasks)
     }, [])
 
     return (
@@ -24,6 +27,7 @@ const TaskList = () => {
                 <thead>
                     <tr>
                         <th>Completed</th>
+                        {/* <th>ID for Testing</th> */}
                         <th>Task Note</th>
                     </tr>                   
                 </thead>
@@ -31,7 +35,7 @@ const TaskList = () => {
                     {tasks.map((t) => (
                         <TaskRow key={t.id} task={t} />
                     ))}
-                    <TaskInput />
+                    <TaskInput tasks = {tasks} setTasks = {setTasks}/>
                 </tbody>
             </table>
         </>

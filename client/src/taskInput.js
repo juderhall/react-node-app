@@ -1,29 +1,32 @@
-import {useEffect, useState} from "react"
+import {useState} from "react"
 
-const TaskInput = () => {
-    const [task, setTask] = useState("")
+const TaskInput = ({tasks, setTasks}) => {
+    const [note, setNote] = useState("")
     
     const submit = async (e) => {
         e.preventDefault()
 
-        fetch("/api/tasks", {
+        await fetch("/api/tasks", {
             method: "POST",
-            body: (task),
-            headers: {"Content-type": "application/json; charset=UTF-8"}
+            body: (note),
         })
+        console.log(note)
+        // let arr = [...tasks, note]
+        // console.log(arr)
+        // setTasks(arr)
     }
-
 
     return (
         <tr>
             <td />
             <td>
                 <form onSubmit = {submit}>
-                    <input type="text" value={task}
-                        onChange = {(e) => setTask(e.target.value)} />
+                    <input type="text" value={note}
+                        onChange = {(e) => setNote(e.target.value)} />
                 </form>
             </td>
         </tr>
+
     )
 }
 

@@ -40,13 +40,13 @@ app.get("/api/tasks", (req, res) => {
 })
 
 app.post("/api/tasks", (req, res) => {
-    const {task} = req.body
-    console.log(task)
+    const {note} = req.body
+    console.log(note)
     sequelize.query(`
         insert into tasks 
             (note)
         VALUES
-            ('${task}')
+            ('${note}')
     `).then(() => {
         res.sendStatus(200)
     })
