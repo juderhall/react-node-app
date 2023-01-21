@@ -6,6 +6,8 @@ const TaskInput = ({tasks, setTasks}) => {
     const submit = async (e) => {
         e.preventDefault()
 
+        // await fetch()
+
         await fetch("/api/tasks", {
             method: "POST",
             body: (note),

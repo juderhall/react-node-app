@@ -39,6 +39,11 @@ app.get("/api/tasks", (req, res) => {
     })
 })
 
+app.get("/api/tasks/id", (req, res) => {
+    sequelize.query(`
+    `)
+})
+
 app.post("/api/tasks", (req, res) => {
     const {note} = req.body
     console.log(note)

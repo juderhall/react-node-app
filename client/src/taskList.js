@@ -29,6 +29,9 @@ const TaskList = () => {
                         <th>Completed</th>
                         {/* <th>ID for Testing</th> */}
                         <th>Task Note</th>
+                        <th>
+                            Delete
+                        </th>
                     </tr>                   
                 </thead>
                 <tbody>
