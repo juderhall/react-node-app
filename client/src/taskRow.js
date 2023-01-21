@@ -6,7 +6,7 @@ const TaskRow = ({task}) => {
         <tr>
             <td><CompletedTask /></td>
             <td>{task.note}</td>
-            <td><DeleteButton taskId={task.id}/></td>
+            <td><DeleteButton taskId={task.task_id}/></td>
         </tr>
     )
 }

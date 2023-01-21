@@ -39,9 +39,14 @@ app.get("/api/tasks", (req, res) => {
     })
 })
 
-app.get("/api/tasks/id", (req, res) => {
+app.delete("/api/tasks/id", (req, res) => {
+    const id = req.body
+    console.log(id)
     sequelize.query(`
-    `)
+
+    `).then(() => {
+        res.sendStatus(200)
+    })
 })
 
 app.post("/api/tasks", (req, res) => {

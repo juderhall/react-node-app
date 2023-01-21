@@ -1,5 +1,5 @@
 const DeleteButton = (id) => {
-    
+
     const deleteTask = async (e) => {
         e.preventDefault()
     
@@ -7,7 +7,7 @@ const DeleteButton = (id) => {
             method: "DELETE",
             body: (id),
         })
-    
+        console.log(id)
     }
     
     return(
