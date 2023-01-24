@@ -5,7 +5,8 @@ const PORT = process.env.PORT
 const bodyParser = require("body-parser")
 const express = require("express")
 const app = express()
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.text({type:"*/*"}))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 const Sequelize = require('sequelize')
@@ -50,7 +51,6 @@ app.delete("/api/tasks/id", (req, res) => {
 })
 
 app.post("/api/tasks", (req, res) => {
-    const {note} = req.body
     console.log(note)
     sequelize.query(`
         insert into tasks 
