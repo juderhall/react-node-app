@@ -51,7 +51,8 @@ app.delete("/api/tasks/:id", (req, res) => {
 })
 
 app.post("/api/tasks", (req, res) => {
-    console.log(note)
+    console.log(req.body)
+    const note = req.body
     sequelize.query(`
         insert into tasks 
             (note)

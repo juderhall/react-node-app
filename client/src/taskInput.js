@@ -1,23 +1,18 @@
 import {useState} from "react"
+import axios from "axios"
 
-const TaskInput = ({tasks, setTasks}) => {
+const TaskInput = ({setCounter}) => {
     const [note, setNote] = useState("")
     
-    const submit = async (e) => {
+    const submit = (e) => {
         e.preventDefault()
 
-        
-
-        // await fetch()
-
-        // await fetch("/api/tasks", {
-        //     method: "POST",
-        //     body: (note),
-        // })
         console.log(note)
-        // let arr = [...tasks, note]
-        // console.log(arr)
-        // setTasks(arr)
+
+        axios.post("/api/tasks", note).then((res) => {
+            setNote("")
+            // setCounter(1)
+        })
     }
 
     return (

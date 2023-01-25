@@ -6,10 +6,7 @@ import axios from "axios"
 
 const TaskList = () => {
     const [tasks, setTasks] = useState([])
-    
-    // const [counter, setCounter] = useState(0)
-
-
+    const [counter, setCounter] = useState(0)
 
     const fetchtasks = async () => {
         const response = await fetch("/api/tasks")
@@ -45,7 +42,7 @@ const TaskList = () => {
                     {tasks.map((t) => (
                         <TaskRow key={t.id} task={t} />
                     ))}
-                    <TaskInput tasks = {tasks} setTasks = {setTasks}/>
+                    <TaskInput tasks={tasks} setTasks={setTasks} setCounter={setCounter}/>
                 </tbody>
             </table>
         </div>
