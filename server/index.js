@@ -40,8 +40,8 @@ app.get("/api/tasks", (req, res) => {
     })
 })
 
-app.delete("/api/tasks/id", (req, res) => {
-    const id = req.body
+app.delete("/api/tasks/:id", (req, res) => {
+    const {id} = req.params
     console.log(id)
     sequelize.query(`
 

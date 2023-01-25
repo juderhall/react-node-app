@@ -1,11 +1,15 @@
 import {useState, useEffect} from "react"
 import TaskRow from "./taskRow"
 import TaskInput from "./taskInput"
+import axios from "axios"
+
 
 const TaskList = () => {
     const [tasks, setTasks] = useState([])
     
     // const [counter, setCounter] = useState(0)
+
+
 
     const fetchtasks = async () => {
         const response = await fetch("/api/tasks")
@@ -14,21 +18,24 @@ const TaskList = () => {
     }
 
     useEffect(() => {
-        fetchtasks()
-        console.log(tasks)
+        // fetchtasks()
+        axios.get("/api/tasks").then((res) => {
+            console.log(res.data)
+            setTasks(res.data)
+        })
     }, [])
 
     return (
-        <>
+        <div class="container-lg">
             <div>
-                <header> Task List</header>
+                <header>To Do</header>
             </div>
             <table>
                 <thead>
                     <tr>
-                        <th>Completed</th>
+                        <th></th>
                         {/* <th>ID for Testing</th> */}
-                        <th>Task Note</th>
+                        <th class="col-6">Task Note</th>
                         <th>
                             Delete
                         </th>
@@ -41,7 +48,7 @@ const TaskList = () => {
                     <TaskInput tasks = {tasks} setTasks = {setTasks}/>
                 </tbody>
             </table>
-        </>
+        </div>
     )
 }
 
