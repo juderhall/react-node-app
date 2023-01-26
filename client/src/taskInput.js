@@ -1,8 +1,10 @@
 import {useState} from "react"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
-const TaskInput = ({setCounter}) => {
+const TaskInput = ({setCounter, setTasks}) => {
     const [note, setNote] = useState("")
+    const navigate = useNavigate()
     
     const submit = (e) => {
         e.preventDefault()
@@ -11,7 +13,7 @@ const TaskInput = ({setCounter}) => {
 
         axios.post("/api/tasks", note).then((res) => {
             setNote("")
-            // setCounter(1)
+            setTimeout(() => navigate('/'), 1000)
         })
     }
 

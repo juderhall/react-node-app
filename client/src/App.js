@@ -1,19 +1,15 @@
-import TaskList from "./taskList"
+import React from 'react'
+import { Route, Routes} from 'react-router-dom'
+import Home from './Home'
 
-import backdrop from "./backdrop.png"
-import logo from "./logo.svg"
-
-import "./App.css";
-
-function App() {
-
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <TaskList />
-      </header>
+        <Routes>
+            <Route path='/' element={<Home/>}/>
+        </Routes>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
