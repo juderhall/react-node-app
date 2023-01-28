@@ -8,17 +8,10 @@ const TaskList = () => {
     const [tasks, setTasks] = useState([])
     const [counter, setCounter] = useState(0)
 
-    const fetchtasks = async () => {
-        const response = await fetch("/api/tasks")
-        const tasks = await response.json()
-        setTasks(tasks)
-    }
-
     useEffect(() => {
-        // fetchtasks()
         axios.get("/api/tasks").then((res) => {
-            console.log(res.data)
             setTasks(res.data)
+            console.log(counter + "taskList")
         })
     }, [])
 
@@ -42,7 +35,7 @@ const TaskList = () => {
                     {tasks.map((t) => (
                         <TaskRow key={t.id} task={t} />
                     ))}
-                    <TaskInput tasks={tasks} setTasks={setTasks} setCounter={setCounter}/>
+                    <TaskInput setCounter={setCounter}/>
                 </tbody>
             </table>
         </div>

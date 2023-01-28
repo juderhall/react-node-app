@@ -8,11 +8,6 @@ const DeleteButton = (id) => {
         console.log(id)
 
         await axios.delete(`/api/tasks/${id.task_id}`)
-
-        // await fetch("/api/tasks/id", {
-        //     method: "DELETE",
-        //     body: (id),
-        // })
   
     }
     
