@@ -1,13 +1,15 @@
 import axios from 'axios'
 
-const DeleteButton = (id) => {
+const DeleteButton = (id, {counter, setCounter}) => {
 
     const deleteTask = async (e) => {
-        e.preventDefault()
+        // e.preventDefault()
     
         console.log(id)
 
-        await axios.delete(`/api/tasks/${id.task_id}`)
+        await axios.delete(`/api/tasks/${id.task_id}`).then(() => {
+            
+        })
   
     }
     

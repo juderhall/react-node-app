@@ -9,12 +9,12 @@ Server:
 [X] Sends responses
 
 Front end: 
-[ ] Has 3-5 interactive features 
+[X] Has 3-5 interactive features 
 [X] Communicates with server 
-[ ] Has at least 5 components 
+[X] Has at least 5 components 
 [X] Stores values on state 
 [X] Uses values from state to display information and/or make requests 
-[ ] Uses props to pass data and/or methods 
+[X] Uses props to pass data and/or methods 
 [ ] Includes custom styling
 
 # Getting Started with Create React App

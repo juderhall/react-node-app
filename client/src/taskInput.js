@@ -1,24 +1,20 @@
 import {useState} from "react"
 import axios from "axios"
-import { useNavigate } from "react-router-dom"
 
-const TaskInput = ({counter, setCounter}) => {
+const TaskInput = () => {
     const [note, setNote] = useState("")
-    const navigate = useNavigate()
     
-    const submit = (e) => {
-        // e.preventDefault()
-
-        console.log(note)
-
-        axios.post("/api/tasks", note).then((res) => {
+    const submit = () => {
+        axios.post("/api/tasks", note).then(() => {
             setNote("")
-            setCounter(counter++)
-            console.log(counter + "taskInput")
         })
     }
 
-//remove form + create div onSubmit
+/* The idea is to try and remove the form, and try a regular input type as the form is 
+cause the entire thing to refresh. Is it? I've gotten rid of all counters and navigators,
+and I literally cannot figure out what is cause the parent compnent to understand that
+something in the child is refreshing. Is it the submit for?
+*/
 
     return (
         <tr>

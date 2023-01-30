@@ -44,7 +44,8 @@ app.delete("/api/tasks/:id", (req, res) => {
     const {id} = req.params
     console.log(id)
     sequelize.query(`
-
+        DELETE FROM tasks
+        WHERE task_id = '${id}'
     `).then(() => {
         res.sendStatus(200)
     })

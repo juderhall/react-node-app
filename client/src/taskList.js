@@ -33,7 +33,7 @@ const TaskList = () => {
                 </thead>
                 <tbody>
                     {tasks.map((t) => (
-                        <TaskRow key={t.id} task={t} />
+                        <TaskRow key={t.id} task={t} setCounter={setCounter} counter={counter}/>
                     ))}
                     <TaskInput setCounter={setCounter}/>
                 </tbody>
