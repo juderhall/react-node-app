@@ -1,17 +1,15 @@
-import {useState, useEffect} from "react"
+import axios from "axios"
 import TaskRow from "./taskRow"
 import TaskInput from "./taskInput"
-import axios from "axios"
 
+import {useState, useEffect} from "react"
 
 const TaskList = () => {
     const [tasks, setTasks] = useState([])
-    const [counter, setCounter] = useState(0)
 
     useEffect(() => {
         axios.get("/api/tasks").then((res) => {
             setTasks(res.data)
-            console.log(counter + "taskList")
         })
     }, [])
 
@@ -23,8 +21,7 @@ const TaskList = () => {
             <table>
                 <thead>
                     <tr>
-                        <th></th>
-                        {/* <th>ID for Testing</th> */}
+                        <th>Completed</th>
                         <th class="col-6">Task Note</th>
                         <th>
                             Delete
@@ -33,9 +30,9 @@ const TaskList = () => {
                 </thead>
                 <tbody>
                     {tasks.map((t) => (
-                        <TaskRow key={t.id} task={t} setCounter={setCounter} counter={counter}/>
+                        <TaskRow key={t.id} task={t}/>
                     ))}
-                    <TaskInput setCounter={setCounter}/>
+                    <TaskInput/>
                 </tbody>
             </table>
         </div>

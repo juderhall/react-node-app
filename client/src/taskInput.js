@@ -11,10 +11,10 @@ const TaskInput = () => {
     }
 
 /* The idea is to try and remove the form, and try a regular input type as the form is 
-cause the entire thing to refresh. Is it? I've gotten rid of all counters and navigators,
-and I literally cannot figure out what is cause the parent compnent to understand that
-something in the child is refreshing. Is it the submit for?
-*/
+causing the entire list to refresh. The goal is for just the bottom taskRow to refresh,
+as well as the input bar. I've gotten rid of all counters and navigators, cannot figure 
+out what is causing the parent compnent to understand that something in the child has 
+changed. Is the submit form communicating this, and will deleting it break this? */
 
     return (
         <tr>
