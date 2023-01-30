@@ -3,27 +3,42 @@ import axios from "axios"
 
 const TaskInput = () => {
     const [note, setNote] = useState("")
+
+    console.log(note)
     
-    const submit = () => {
-        axios.post("/api/tasks", note).then(() => {
-            setNote("")
-        })
+    const submit = (e) => {
+        const {key} = e;
+        
+        if(key === 'Enter') {
+            axios.post("/api/tasks", note).then(() => {
+                setNote("")
+            })
+        }
     }
 
-/* The idea is to try and remove the form, and try a regular input type as the form is 
-causing the entire list to refresh. The goal is for just the bottom taskRow to refresh,
-as well as the input bar. I've gotten rid of all counters and navigators, cannot figure 
-out what is causing the parent compnent to understand that something in the child has 
-changed. Is the submit form communicating this, and will deleting it break this? */
+/* 
+   I have removed the form tag and opted for an input tag hoping that it would fix
+   the way that react loads the TaskList component- with the form tag in refreshes
+   the entire list and looks very clunky. I have confirmed that the input tag is
+   working completed, but it is no longer refreshing the list at all- going to try
+   the counter method once more!
+*/
 
     return (
         <tr>
             <td />
             <td>
-                <form onSubmit = {submit}>
+                {/* <form onSubmit = {submit}>
                     <input type="text" value={note}
                         onChange = {(e) => setNote(e.target.value)} />
-                </form>
+                </form> */}
+                <input
+                    type="text"
+                    id="note"
+                    value={note}
+                    onKeyDown={submit}
+                    onChange={(e) => setNote(e.target.value)}
+                />
             </td>
         </tr>
     )

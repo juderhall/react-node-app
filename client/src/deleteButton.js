@@ -1,9 +1,8 @@
 import axios from 'axios'
 
 const DeleteButton = (id) => {
-    const deleteTask = async (e) => {
-        await axios.delete(`/api/tasks/${id.task_id}`).then(() => {
-        })
+    const deleteTask = () => {
+        axios.delete(`/api/tasks/${id.task_id}`)
     }
     
     return(
