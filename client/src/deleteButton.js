@@ -7,7 +7,9 @@ const DeleteButton = (id) => {
     }
 
     return(
-            <button onClick={deleteTask}>X</button> 
+        <form onClick={deleteTask}>
+            <button>X</button>
+        </form> 
     )
 }
 
