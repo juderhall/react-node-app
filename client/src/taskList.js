@@ -1,7 +1,6 @@
 import axios from "axios"
 import TaskRow from "./taskRow"
 import TaskInput from "./taskInput"
-
 import {useState, useEffect} from "react"
 
 const TaskList = () => {

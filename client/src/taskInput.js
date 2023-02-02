@@ -1,20 +1,27 @@
-import {useState} from "react"
 import axios from "axios"
+import React, {useState} from "react"
+
 
 const TaskInput = () => {
     const [note, setNote] = useState("")
 
     console.log(note)
     
-    const submit = (e) => {
-        const {key} = e;
-        
-        if(key === 'Enter') {
-            axios.post("/api/tasks", note).then(() => {
-                setNote("")
-            })
-        }
+    const submit = () => {
+        axios.post("/api/tasks", note).then(() => {
+            setNote("")
+        })
     }
+
+    // const submit = (e) => {
+    //     const {key} = e;
+        
+    //     if(key === 'Enter') {
+    //         axios.post("/api/tasks", note).then(() => {
+    //             setNote("")
+    //         })
+    //     }
+    // }
 
 /* 
    I have removed the form tag and opted for an input tag hoping that it would fix
@@ -28,20 +35,23 @@ const TaskInput = () => {
         <tr>
             <td />
             <td>
-                {/* <form onSubmit = {submit}>
+                <form onSubmit = {submit}>
                     <input type="text" value={note}
                         onChange = {(e) => setNote(e.target.value)} />
-                </form> */}
-                <input
+                </form>
+                {/* <input
                     type="text"
                     id="note"
                     value={note}
                     onKeyDown={submit}
                     onChange={(e) => setNote(e.target.value)}
-                />
+                /> */}
             </td>
         </tr>
     )
 }
 
+const TaskInputMem = React.memo(TaskInput)
+
 export default TaskInput
+export {TaskInputMem}
