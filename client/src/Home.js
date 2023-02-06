@@ -1,10 +1,4 @@
 import TaskList from "./taskList"
-
-import {useState} from 'react'
-
-import backdrop from "./backdrop.png"
-import logo from "./logo.svg"
-
 import "./App.css";
 
 function Home() {
