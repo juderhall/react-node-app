@@ -9,7 +9,7 @@ const TaskRow = ({task}) => {
     return (
         <tr>
             <td><CompletedTask /></td>
-            <td>{task.note}</td>
+            <td align="left">{task.note}</td>
             <td><DeleteButton task_id={task.task_id}/></td>
         </tr>
     )

@@ -14,9 +14,6 @@ const TaskList = () => {
 
     return (
         <div class="container-lg">
-            <div>
-                <header>To Do</header>
-            </div>
             <table>
                 <thead>
                     <tr>

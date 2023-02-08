@@ -1,13 +1,11 @@
 require('dotenv').config()
 const PORT = process.env.PORT
-//const CONNECTION_STRING = process.env.CONNECTION_STRING
 
 const bodyParser = require("body-parser")
 const express = require("express")
 const app = express()
 app.use(bodyParser.text({type:"*/*"}))
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
 
 const Sequelize = require('sequelize')
 const sequelize = new Sequelize(process.env.CONNECTION_STRING, {
